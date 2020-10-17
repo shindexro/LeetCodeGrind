@@ -8,17 +8,17 @@ public:
         // Sliding window method
         int left = 0;
         int right = 0;
-        unordered_map<char, int> inWindow;  // maps char to its index
+        unordered_map<char, int> lastSeen;  // maps char to its index
         int longest = 0;
 
         while (right < s.size()) {
-            if (inWindow.find(s[right]) == inWindow.end()
-                    || inWindow[s[right]] < left) {
-                inWindow[s[right]] = right;
+            if (lastSeen.find(s[right]) == lastSeen.end()
+                    || lastSeen[s[right]] < left) {
+                lastSeen[s[right]] = right;
                 right++;
                 longest = (right - left > longest) ? right - left : longest;
             } else {
-                left = inWindow[s[right]] + 1;
+                left = lastSeen[s[right]] + 1;
             }
         }
         return longest;
