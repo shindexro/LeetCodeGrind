@@ -42,6 +42,7 @@ public:
     	r_ = combination_length;
     }
     
+    // O(n) time
     string next() {
     	if (indices_.empty()) {
     		for (int i = 0; i < r_; i++) {
@@ -59,6 +60,7 @@ public:
     	return s;
     }
     
+    // O(1) time
     bool hasNext() {
         return indices_.empty() || indices_[0] < n_ - r_;
     }
